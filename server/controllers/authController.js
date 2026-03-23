@@ -100,6 +100,12 @@ export const login = async (req, res) => {
 
     user.password = undefined; // remove password before sending response
     const token = generateJsonWebToken(user._id, user.role);
+    res.cookie("authtoken", token, {
+      httpOnly: true, // ← JS can't access it (safer)
+      secure: true, // ← only over HTTPS
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
+    });
+
     return res.status(200).json({
       success: true,
       message: "User logged in successfully.",
