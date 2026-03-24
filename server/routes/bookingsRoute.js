@@ -6,6 +6,7 @@ import {
   getMyBookings,
   cancelBooking,
 } from "../controllers/bookingController.js";
+import { protect, admin } from "../middlewares/authMiddleware.js";
 const bookingRouter = express.Router();
 
 bookingRouter.post("/send-otp", protect, sendBookingOTP);
