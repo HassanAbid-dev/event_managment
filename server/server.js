@@ -12,8 +12,8 @@ dotenv.config(); //it must be configed before using env variables
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:3000", // your frontend URL
-    credentials: true, // ← allows cookies to be sent ✅
+    origin: "http://localhost:5173", // your frontend URL
+    // credentials: true, // ← allows cookies to be sent ✅
   }),
 );
 app.use(cookieParser());
